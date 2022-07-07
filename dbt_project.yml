@@ -3,6 +3,8 @@ version: '0.7.0'
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 config-version: 2
 
+profile: 'snowflake-dev-dbt'
+
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
@@ -16,7 +18,7 @@ clean-targets:
 
 vars:
   # location of raw data table
-  segment_page_views_table:
+  segment_page_views_table: "{{ source('segment', 'pages') }}"
 
   # number of trailing hours to re-sessionize for.
   # events can come in late and we want to still be able to incorporate

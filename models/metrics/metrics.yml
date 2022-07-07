@@ -1,0 +1,14 @@
+version: 2
+sources: []
+models: []
+metrics:
+- name: segment__daily_number_of_sessions
+  label: Segment Monthly Number of Sessions
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily
+  type: count
+  sql: anonymous_id
+  timestamp: session_start_tstamp
+  time_grains: [day,month]
+  filters: []
+  dimensions: [device_category,referrer_source]
