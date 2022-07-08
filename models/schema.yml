@@ -1,7 +1,2 @@
 version: 2
 
-sources:
- - name: segment
-   database: HOUSEWARE_HOUSEWARE
-   tables: 
-    - name: pages
