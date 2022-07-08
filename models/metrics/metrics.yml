@@ -51,7 +51,7 @@ metrics:
   label: Monthly Active Users
   model: ref('segment__users')
   description: Monthly Active Users
-  type: count
+  type: count_distinct
   sql: user_id
   timestamp: sent_at
   time_grains: [month]
