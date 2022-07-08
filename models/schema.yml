@@ -1,2 +1,7 @@
 version: 2
 
+sources:
+ - name: fivetran_segment
+   database: HOUSEWARE
+   tables: 
+    - name: pages
