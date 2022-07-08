@@ -12,3 +12,59 @@ metrics:
   time_grains: [day,month]
   filters: []
   dimensions: [device_category,referrer_source]
+
+- name: segment__daily_unique_users
+  label: Daily Unique Users
+  model: ref('segment__identifies')
+  description: Daily Unique Users on App
+  type: count
+  sql: user_id
+  timestamp: sent_at
+  time_grains: [day,month]
+  filters: []
+  dimensions: []
+
+## to do string operation on url -- cut the url after /
+- name: segment__daily_page_views
+  label: Daily Page Views
+  model: ref('segment__pages')
+  description: Daily Page Views
+  type: count
+  sql: message_id
+  timestamp: sent_at
+  time_grains: [day,month]
+  filters: []
+  dimensions: [url]
+
+- name: segment__monthly_event_count
+  label: Monthly Event Count
+  model: ref('segment__tracks')
+  description: Monthly Event Count
+  type: count
+  sql: event
+  timestamp: sent_at
+  time_grains: [day,month]
+  filters: []
+  dimensions: [event]
+
+- name: segment__monthly_active_users
+  label: Monthly Active Users
+  model: ref('segment__users')
+  description: Monthly Active Users
+  type: count
+  sql: user_id
+  timestamp: sent_at
+  time_grains: [month]
+  filters: []
+  dimensions: []
+  
+- name: segment__monthly_average_session_time_seconds
+  label: Monthly Average Session Time Per User in Seconds 
+  model: ref('segment_web_sessions')
+  description: Monthly Active Users
+  type: average
+  sql: duration_in_s
+  timestamp: session_start_tstamp
+  time_grains: [month]
+  filters: []
+  dimensions: []
