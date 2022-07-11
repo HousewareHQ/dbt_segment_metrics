@@ -1,5 +1,5 @@
 with users as (
-    select * from segment.users
+    select * from fivetran_segment.users
 )
 
 select * from users

@@ -1,5 +1,5 @@
 with identifies as (
-    select * from segment.identifies
+    select * from fivetran_segment.identifies
 )
 
 select * from identifies

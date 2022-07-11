@@ -1,4 +1,4 @@
-name: 'segment'
+name: 'dbt_segment_metrics'
 version: '0.7.0'
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 config-version: 2
@@ -10,6 +10,7 @@ analysis-paths: ["analyses"]
 test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
+
 
 target-path: "target"
 clean-targets:
