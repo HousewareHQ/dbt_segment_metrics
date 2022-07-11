@@ -1,5 +1,5 @@
 with pages as (
-    select * from fivetran_segment.pages
+    select * from {{ var('segment__schema') }}.pages
 )
 
 select * from pages

@@ -3,7 +3,7 @@ version: '0.7.0'
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 config-version: 2
 
-
+profile: houseware_metrics
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -18,26 +18,19 @@ clean-targets:
   - "dbt_packages"
 
 vars:
-  # location of raw data table
-  segment_page_views_table: "{{ source('fivetran_segment', 'pages') }}"
 
+  # put the database and schema where segment raw data is stored
+  segment__source: HOUSEWARE_HOUSEWARE
+  segment__schema: fivetran_segment
+  # location of raw data table
+  segment_page_views_table: "{{ source(var('segment__schema'), 'pages') }}"
   # number of trailing hours to re-sessionize for.
   # events can come in late and we want to still be able to incorporate
   # them into the definition of a session without needing a full refresh.
   segment_sessionization_trailing_window: 3
-
   # sessionization inactivity cutoff: of there is a gap in page view times
   # that exceeds this number of seconds, the subsequent page view will
   # start a new session.
   segment_inactivity_cutoff: 30 * 60
-
-  # If there are extra columns you wish to pass through this package,
-  # define them here. Columns will be included in the `segment_web_sessions`
-  # model as `first_<column>` and `last_<column>`. Extremely useful when
-  # using this package on top of unioned Segment sources, as you can then
-  # pass through a column indicating which source the data is from.
   segment_pass_through_columns: []
-
-  # BigQuery only: partition granularity for partition_by clause
-  # options can be found here: https://docs.getdbt.com/reference/resource-configs/bigquery-configs#partition-clause
   segment_bigquery_partition_granularity: "day"

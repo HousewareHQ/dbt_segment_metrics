@@ -1,5 +1,5 @@
 with identifies as (
-    select * from fivetran_segment.identifies
+    select * from {{ var('segment__schema') }}.identifies
 )
 
 select * from identifies

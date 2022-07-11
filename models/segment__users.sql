@@ -1,5 +1,5 @@
 with users as (
-    select * from fivetran_segment.users
+    select * from {{ var('segment__schema') }}.users
 )
 
 select * from users
