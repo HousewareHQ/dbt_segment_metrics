@@ -3,11 +3,11 @@ sources: []
 models: []
 metrics:
 - name: segment__daily_number_of_sessions
-  label: Segment Monthly Number of Sessions
+  label: Segment Daily Number of Sessions
   model: ref('segment_web_sessions')
   description: Number of sessions daily
   type: count
-  sql: anonymous_id
+  sql: session_id
   timestamp: session_start_tstamp
   time_grains: [day,month]
   filters: []
@@ -17,9 +17,9 @@ metrics:
   label: Daily Unique Users
   model: ref('segment__identifies')
   description: Daily Unique Users on App
-  type: count
+  type: count_distinct
   sql: user_id
-  timestamp: sent_at
+  timestamp: received_at
   time_grains: [day,month]
   filters: []
   dimensions: []
@@ -31,10 +31,10 @@ metrics:
   description: Daily Page Views
   type: count
   sql: message_id
-  timestamp: sent_at
+  timestamp: received_at
   time_grains: [day,month]
   filters: []
-  dimensions: [url]
+  dimensions: [context_page_url]
 
 - name: segment__monthly_event_count
   label: Monthly Event Count
@@ -42,7 +42,7 @@ metrics:
   description: Monthly Event Count
   type: count
   sql: event
-  timestamp: sent_at
+  timestamp: received_at
   time_grains: [day,month]
   filters: []
   dimensions: [event]
@@ -53,7 +53,7 @@ metrics:
   description: Monthly Active Users
   type: count_distinct
   sql: user_id
-  timestamp: sent_at
+  timestamp: received_at
   time_grains: [month]
   filters: []
   dimensions: []

@@ -11,6 +11,9 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 
+models:
+  dbt_segment_metrics:
+    +materialized: table
 
 target-path: "target"
 clean-targets:
