@@ -6,7 +6,7 @@ metrics:
   label: Segment Daily Number of Sessions
   model: ref('segment_web_sessions')
   description: Number of sessions daily
-  type: count
+  type: count_distinct
   sql: session_id
   timestamp: session_start_tstamp
   time_grains: [day,month]
