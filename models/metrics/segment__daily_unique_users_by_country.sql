@@ -7,8 +7,8 @@
 
 select *
 from {{ metrics.metric(
-    metric_name='segment__daily_unique_users',
+    metric_name='segment__daily_unique_users_by_country',
     grain='day',
-    dimensions=[],
+    dimensions=['context_location_country'],
     secondary_calculations=[]
 ) }}

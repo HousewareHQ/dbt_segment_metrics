@@ -9,6 +9,6 @@ select *
 from {{ metrics.metric(
     metric_name='segment__daily_page_views',
     grain='day',
-    dimensions=[],
+    dimensions=['context_page_path'],
     secondary_calculations=[]
 ) }}

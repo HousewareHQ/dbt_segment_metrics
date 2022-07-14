@@ -11,11 +11,33 @@ metrics:
   timestamp: session_start_tstamp
   time_grains: [day,month]
   filters: []
-  dimensions: [device_category,referrer_source]
+  dimensions: []
+
+- name: segment__daily_number_of_sessions_by_device_category
+  label: Segment Daily Number of Sessions By Device Category
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily differentiated by device category
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day,month]
+  filters: []
+  dimensions: [device_category]
+
+- name: segment__daily_number_of_sessions_by_referrer_source
+  label: Segment Daily Number of Sessions By Referrer Source
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily differentiated by where they are coming from
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day,month]
+  filters: []
+  dimensions: [referrer_source]
 
 - name: segment__daily_unique_users
   label: Daily Unique Users
-  model: ref('segment__identifies')
+  model: ref('segment__users')
   description: Daily Unique Users on App
   type: count_distinct
   sql: user_id
@@ -23,6 +45,28 @@ metrics:
   time_grains: [day,month]
   filters: []
   dimensions: []
+
+- name: segment__daily_unique_users_by_country
+  label: Daily Unique Users
+  model: ref('segment__users')
+  description: Daily Unique Users on App
+  type: count_distinct
+  sql: user_id
+  timestamp: received_at
+  time_grains: [day,month]
+  filters: []
+  dimensions: [context_location_country]
+
+- name: segment__daily_unique_users_by_country_and_city
+  label: Daily Unique Users
+  model: ref('segment__users')
+  description: Daily Unique Users on App
+  type: count_distinct
+  sql: user_id
+  timestamp: received_at
+  time_grains: [day,month]
+  filters: []
+  dimensions: [context_location_country,context_location_city]
 
 ## to do string operation on url -- cut the url after /
 - name: segment__daily_page_views
@@ -34,7 +78,18 @@ metrics:
   timestamp: received_at
   time_grains: [day,month]
   filters: []
-  dimensions: [context_page_url]
+  dimensions: []
+
+- name: segment__daily_page_views_by_page_path
+  label: Daily Page Views
+  model: ref('segment__pages')
+  description: Daily Page Views
+  type: count
+  sql: message_id
+  timestamp: received_at
+  time_grains: [day,month]
+  filters: []
+  dimensions: [context_page_path]
 
 - name: segment__monthly_event_count
   label: Monthly Event Count
@@ -47,7 +102,7 @@ metrics:
   filters: []
   dimensions: [event]
 
-- name: segment__monthly_active_users
+- name: segment__monthly_unique_users
   label: Monthly Active Users
   model: ref('segment__users')
   description: Monthly Active Users
@@ -68,3 +123,59 @@ metrics:
   time_grains: [month]
   filters: []
   dimensions: []
+
+- name: segment__monthly_average_session_time_seconds_by_device_category
+  label: Monthly Average Session Time Per User in Seconds 
+  model: ref('segment_web_sessions')
+  description: Monthly Active Users
+  type: average
+  sql: duration_in_s
+  timestamp: session_start_tstamp
+  time_grains: [month]
+  filters: []
+  dimensions: [device_category]
+
+- name: segment__monthly_average_session_time_seconds_by_referrer_source
+  label: Monthly Average Session Time Per User in Seconds 
+  model: ref('segment_web_sessions')
+  description: Monthly Active Users
+  type: average
+  sql: duration_in_s
+  timestamp: session_start_tstamp
+  time_grains: [month]
+  filters: []
+  dimensions: [referrer_source]
+
+- name: segment__daily_unique_visitors
+  label: Daily Unique Visitors
+  model: ref('segment__pages')
+  description: Daily Unique Visitors
+  type: count_distinct
+  sql: anonymous_id
+  timestamp: received_at
+  time_grains: [day,month]
+  filters: []
+  dimensions: []
+
+
+- name: segment__daily_unique_visitors_by_country
+  label: Daily Unique Visitors
+  model: ref('segment__pages')
+  description: Daily Unique Visitors
+  type: count_distinct
+  sql: anonymous_id
+  timestamp: received_at
+  time_grains: [day,month]
+  filters: []
+  dimensions: [context_location_country]
+
+- name: segment__daily_unique_visitors_by_country_and_city
+  label: Daily Unique Visitors
+  model: ref('segment__pages')
+  description: Daily Unique Visitors
+  type: count_distinct
+  sql: anonymous_id
+  timestamp: received_at
+  time_grains: [day,month]
+  filters: []
+  dimensions: [context_location_city]

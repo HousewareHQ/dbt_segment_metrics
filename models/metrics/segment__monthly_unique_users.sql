@@ -1,4 +1,4 @@
--- depends_on: {{ ref('segment__pages') }}
+-- depends_on: {{ ref('segment__users') }}
 
 
 
@@ -7,8 +7,9 @@
 
 select *
 from {{ metrics.metric(
-    metric_name='segment__daily_page_views',
-    grain='day',
+    metric_name='segment__monthly_unique_users',
+    grain='month',
     dimensions=[],
     secondary_calculations=[]
 ) }}
+
