@@ -91,7 +91,7 @@ metrics:
   filters: []
   dimensions: [context_page_path]
 
-- name: segment__monthly_event_count
+- name: segment__monthly_event_count_by_event_type
   label: Monthly Event Count
   model: ref('segment__tracks')
   description: Monthly Event Count
