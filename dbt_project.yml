@@ -3,8 +3,6 @@ version: '0.1.0'
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 config-version: 2
 
-profile: houseware_metrics
-
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
@@ -21,10 +19,6 @@ clean-targets:
   - "dbt_packages"
 
 vars:
-
-  # put the database and schema where segment raw data is stored
-  segment__source: HOUSEWARE_HOUSEWARE
-  segment__schema: fivetran_segment
   # location of raw data table
   segment_page_views_table: "{{ source(var('segment__schema'), 'pages') }}"
   # number of trailing hours to re-sessionize for.
