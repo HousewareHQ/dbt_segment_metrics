@@ -12,3 +12,4 @@ from {{ metrics.metric(
     dimensions=['event'],
     secondary_calculations=[]
 ) }}
+

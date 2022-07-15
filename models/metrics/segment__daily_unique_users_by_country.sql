@@ -12,3 +12,4 @@ from {{ metrics.metric(
     dimensions=['context_location_country'],
     secondary_calculations=[]
 ) }}
+

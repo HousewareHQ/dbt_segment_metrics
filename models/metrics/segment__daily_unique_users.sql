@@ -12,3 +12,4 @@ from {{ metrics.metric(
     dimensions=[],
     secondary_calculations=[]
 ) }}
+
