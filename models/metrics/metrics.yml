@@ -46,6 +46,28 @@ metrics:
   filters: []
   dimensions: [referrer_source]
 
+- name: segment__daily_number_of_sessions_by_last_page_url
+  label: Segment Daily Number of Sessions By Last Page URL Path
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily segmented by the last page visited in session
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day]
+  filters: []
+  dimensions: [last_page_url_path]
+
+- name: segment__daily_number_of_sessions_by_first_page_url
+  label: Segment Daily Number of Sessions By First Page URL Path
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily segmented by the first page viewed in session
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day]
+  filters: []
+  dimensions: [first_page_url_path]
+
 - name: segment__daily_unique_users
   label: Segment Daily Unique Users
   model: ref('segment__users')
@@ -101,6 +123,17 @@ metrics:
   time_grains: [day]
   filters: []
   dimensions: [context_page_path]
+
+- name: segment__daily_page_views_by_page_referrer
+  label: Segment Daily Page Views Segmented By Referred Page
+  model: ref('segment__pages')
+  description: Daily number of page views for your website segmented by referred page
+  type: count
+  sql: message_id
+  timestamp: received_at
+  time_grains: [day]
+  filters: []
+  dimensions: [context_page_referrer]
 
 - name: segment__monthly_event_count_by_event_type
   label: Segment Monthly Event Count Segmented By Event Type
