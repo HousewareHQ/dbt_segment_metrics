@@ -1,0 +1,138 @@
+version: 2
+sources: []
+models: []
+metrics:
+
+  #daily metrics
+- name: segment__daily_number_of_sessions
+  label: Segment Daily Number of Sessions
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day]
+  filters: []
+  dimensions: []
+
+- name: segment__daily_number_of_sessions_by_page_path
+  label: Segment Daily Number of Sessions By Page Path
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily segmented by page url
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day]
+  filters: []
+  dimensions: [last_page_url_path]
+
+- name: segment__daily_number_of_sessions_by_device_category
+  label: Segment Daily Number of Sessions By Device Category
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily segmented by device category
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day]
+  filters: []
+  dimensions: [device_category]
+
+- name: segment__daily_number_of_sessions_by_referrer_source
+  label: Segment Daily Number of Sessions By Referrer Source
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily segmented by the website that brings the traffic
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day]
+  filters: []
+  dimensions: [referrer_source]
+
+- name: segment__daily_number_of_sessions_by_last_page_url
+  label: Segment Daily Number of Sessions By Last Page URL Path
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily segmented by the last page visited in session
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day]
+  filters: []
+  dimensions: [last_page_url_path]
+
+- name: segment__daily_number_of_sessions_by_first_page_url
+  label: Segment Daily Number of Sessions By First Page URL Path
+  model: ref('segment_web_sessions')
+  description: Number of sessions daily segmented by the first page viewed in session
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [day]
+  filters: []
+  dimensions: [first_page_url_path]
+
+  #monthly metrics
+- name: segment__monthly_number_of_sessions
+  label: Segment monthly Number of Sessions
+  model: ref('segment_web_sessions')
+  description: Number of sessions monthly
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [month]
+  filters: []
+  dimensions: []
+
+- name: segment__monthly_number_of_sessions_by_page_path
+  label: Segment monthly Number of Sessions By Page Path
+  model: ref('segment_web_sessions')
+  description: Number of sessions monthly segmented by page url
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [month]
+  filters: []
+  dimensions: [last_page_url_path]
+
+- name: segment__monthly_number_of_sessions_by_device_category
+  label: Segment monthly Number of Sessions By Device Category
+  model: ref('segment_web_sessions')
+  description: Number of sessions monthly segmented by device category
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [month]
+  filters: []
+  dimensions: [device_category]
+
+- name: segment__monthly_number_of_sessions_by_referrer_source
+  label: Segment monthly Number of Sessions By Referrer Source
+  model: ref('segment_web_sessions')
+  description: Number of sessions monthly segmented by the website that brings the traffic
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [month]
+  filters: []
+  dimensions: [referrer_source]
+
+- name: segment__monthly_number_of_sessions_by_last_page_url
+  label: Segment monthly Number of Sessions By Last Page URL Path
+  model: ref('segment_web_sessions')
+  description: Number of sessions monthly segmented by the last page visited in session
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [month]
+  filters: []
+  dimensions: [last_page_url_path]
+
+- name: segment__monthly_number_of_sessions_by_first_page_url
+  label: Segment monthly Number of Sessions By First Page URL Path
+  model: ref('segment_web_sessions')
+  description: Number of sessions monthly segmented by the first page viewed in session
+  type: count_distinct
+  sql: session_id
+  timestamp: session_start_tstamp
+  time_grains: [month]
+  filters: []
+  dimensions: [first_page_url_path]

@@ -1,0 +1,26 @@
+version: 2
+sources: []
+models: []
+metrics:
+## to do string operation on url -- cut the url after /
+- name: segment__monthly_event_count_by_event_type
+  label: Segment Monthly Event Count Segmented By Event Type
+  model: ref('segment__tracks')
+  description: Monthly count of events segmented by event type based on Segment's Track API
+  type: count
+  sql: event
+  timestamp: received_at
+  time_grains: [month]
+  filters: []
+  dimensions: [event]
+
+- name: segment__daily_event_count_by_event_type
+  label: Segment Daily Event Count Segmented By Event Type
+  model: ref('segment__tracks')
+  description: Daily count of events segmented by event type based on Segment's Track API
+  type: count
+  sql: event
+  timestamp: received_at
+  time_grains: [day]
+  filters: []
+  dimensions: [event]

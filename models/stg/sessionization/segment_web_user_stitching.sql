@@ -1,4 +1,4 @@
-{{config(materialized = 'table')}}
+{{config(materialized = 'view')}}
 
 with events as (
 
