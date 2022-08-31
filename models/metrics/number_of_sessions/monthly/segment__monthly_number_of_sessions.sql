@@ -7,8 +7,8 @@
 
 select *
 from {{ metrics.metric(
-    metric_name='segment__daily_number_of_sessions_by_last_page_url',
+    metric_name='segment__monthly_number_of_sessions',
     grain='month',
-    dimensions=['last_page_url_path'],
+    dimensions=[],
     secondary_calculations=[]
 ) }}

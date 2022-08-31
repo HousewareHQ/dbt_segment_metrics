@@ -2,39 +2,6 @@ version: 2
 sources: []
 models: []
 metrics:
-- name: segment__daily_average_session_duration_seconds
-  label: Segment daily Average Session Duration in Seconds
-  model: ref('segment_web_sessions')
-  description: daily average session duration in seconds. Sessionization is done on top of data from Segment's Page API
-  type: average
-  sql: duration_in_s
-  timestamp: session_start_tstamp
-  time_grains: [day]
-  filters: []
-  dimensions: []
-
-- name: segment__daily_average_session_duration_seconds_by_device_category
-  label: Segment daily Average Session Duration in Seconds Segmented By Device Category
-  model: ref('segment_web_sessions')
-  description: daily average session duration in seconds segmented by device category. Sessionization is done on top of data from Segment's Page API
-  type: average
-  sql: duration_in_s
-  timestamp: session_start_tstamp
-  time_grains: [day]
-  filters: []
-  dimensions: [device_category]
-
-- name: segment__daily_average_session_duration_seconds_by_referrer_source
-  label: Segment daily Average Session Duration in Seconds Segmented By Referrer Source
-  model: ref('segment_web_sessions')
-  description: daily average session duration in seconds segmented by source of the traffic. Sessionization is done on top of data from Segment's Page API
-  type: average
-  sql: duration_in_s
-  timestamp: session_start_tstamp
-  time_grains: [day]
-  filters: []
-  dimensions: [referrer_source]
-
 - name: segment__monthly_average_session_duration_seconds
   label: Segment Monthly Average Session Duration in Seconds
   model: ref('segment_web_sessions')

@@ -35,14 +35,3 @@ metrics:
   filters: []
   dimensions: [context_location_country,context_location_city]
 
-- name: segment__monthly_unique_users
-  label: Segment Monthly Unique Users
-  model: ref('segment__users')
-  description: Monthly unique users recorded across your website and mobile applications. This is based on the Segment Identify API
-  type: count_distinct
-  sql: user_id
-  timestamp: received_at
-  time_grains: [month]
-  filters: []
-  dimensions: []  
-
