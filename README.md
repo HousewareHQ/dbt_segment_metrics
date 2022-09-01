@@ -67,6 +67,20 @@ vars:
   segment_schema: your_schema_name
 ```
 
+## Step 4: Separate metrics into different schema
+
+By default, this package will compute all the metrics in your `target` schema inside `target` database. It's a good practice to add a suffix to your schema defining what source the metrics are coming from 
+Go to your `dbt_project.yml` file
+```yml
+# dbt_project.yml
+
+...
+config-version: 2
+
+models:
+  segment_metrics:
+    +schema: segment_metrics
+```
 # 🗄 Which warehouses are supported?
 This package has been tested on BigQuery, Snowflake.
 
