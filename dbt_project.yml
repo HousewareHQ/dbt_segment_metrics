@@ -10,7 +10,7 @@ config-version: 2
 models:
   segment_metrics:
     base:
-      +materialized: view
+      +materialized: table
     metrics:
       +materialized: table
 

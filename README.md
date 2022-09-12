@@ -14,8 +14,7 @@ This package enables you to access commonly used metrics on top of Segment Event
 This package contains transformed models built on top of [dbt-labs Segment](https://github.com/dbt-labs/segment). A dependency on the referred package is declared in this package's `packages.yml` file, so it will automatically download when you run `dbt deps`. 
 
 The metrics offered by this package are described below
-All the metrics are created in your `target_schema` with `segment_metrics` suffixed
-
+(All metrics are available at daily and monthly granularity)
 | **metric**                          | **description**                                                                                                                                                                                                                              |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Segment Number of Sessions    | Number of app sessions taking place                 

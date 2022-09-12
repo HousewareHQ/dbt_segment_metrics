@@ -9,7 +9,7 @@ metrics:
   type: count
   sql: message_id
   timestamp: received_at
-  time_grains: [day]
+  time_grains: [month]
   filters: []
   dimensions: []
 
@@ -20,7 +20,7 @@ metrics:
   type: count
   sql: message_id
   timestamp: received_at
-  time_grains: [day]
+  time_grains: [month]
   filters: []
   dimensions: [context_page_path]
 
@@ -31,6 +31,6 @@ metrics:
   type: count
   sql: message_id
   timestamp: received_at
-  time_grains: [day]
+  time_grains: [month]
   filters: []
   dimensions: [context_page_referrer]
