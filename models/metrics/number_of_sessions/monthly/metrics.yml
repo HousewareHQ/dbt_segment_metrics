@@ -13,17 +13,6 @@ metrics:
   filters: []
   dimensions: []
 
-- name: segment__monthly_number_of_sessions_by_page_path
-  label: Segment monthly Number of Sessions By Page Path
-  model: ref('segment_web_sessions')
-  description: Number of sessions monthly segmented by page url
-  type: count_distinct
-  sql: session_id
-  timestamp: session_start_tstamp
-  time_grains: [month]
-  filters: []
-  dimensions: [last_page_url_path]
-
 - name: segment__monthly_number_of_sessions_by_device_category
   label: Segment monthly Number of Sessions By Device Category
   model: ref('segment_web_sessions')
