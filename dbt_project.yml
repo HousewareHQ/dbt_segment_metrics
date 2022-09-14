@@ -3,23 +3,19 @@ version: '1.0.0'
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 config-version: 2
 
-model-paths: ["models"]
-analysis-paths: ["analyses"]
-test-paths: ["tests"]
-seed-paths: ["seeds"]
-macro-paths: ["macros"]
+#convention to follow is base tables should be fresh and only calculated when creating/updating metrics which depend on the tables
+#materializing as views will help us save storage space, avoid duplication of tables, and also help us get a fresh batch of data on each run
+#we are still exploring if base tables should be materialized as incremental. Feel free to raise an issue regarding it 
 
 models:
   segment_metrics:
-    +materialized: table
-
-target-path: "target"
-clean-targets:
-  - "target"
-  - "dbt_packages"
+    base:
+      +materialized: table
+    metrics:
+      +materialized: table
 
 vars:
-  # location of raw data table
+  #sources have been defined in sources.yml inside base folder
   segment_page_views_table: "{{ source('segment', 'pages') }}"
   segment_tracks_table: "{{ source('segment', 'tracks') }}"
   segment_users_table: "{{ source('segment', 'users') }}"

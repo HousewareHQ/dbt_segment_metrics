@@ -1,0 +1,37 @@
+version: 2
+sources: []
+models: []
+metrics:
+- name: segment__daily_unique_visitors
+  label: Segment Daily Unique Visitors
+  model: ref('segment__pages')
+  description: Daily number of unique visitors visiting your website. Visitors include anonymous users too
+  type: count_distinct
+  sql: anonymous_id
+  timestamp: received_at
+  time_grains: [day]
+  filters: []
+  dimensions: []
+
+
+- name: segment__daily_unique_visitors_by_country
+  label: Segment Daily Unique Visitors Segmented By Country
+  model: ref('segment__pages')
+  description: Daily number of unique visitors visiting your website segmented by user's country derived from their location. Visitors include anonymous users too
+  type: count_distinct
+  sql: anonymous_id
+  timestamp: received_at
+  time_grains: [day]
+  filters: []
+  dimensions: [context_location_country]
+
+- name: segment__daily_unique_visitors_by_country_and_city
+  label: Segment Daily Unique Visitors By Segmented Country and City
+  model: ref('segment__pages')
+  description: Daily number of unique visitors visiting your website segmented by user's country & city derived from their location. Visitors include anonymous users too
+  type: count_distinct
+  sql: anonymous_id
+  timestamp: received_at
+  time_grains: [day]
+  filters: []
+  dimensions: [context_location_country,context_location_city]

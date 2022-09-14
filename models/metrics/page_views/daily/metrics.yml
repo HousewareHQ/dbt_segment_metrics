@@ -1,0 +1,38 @@
+version: 2
+sources: []
+models: []
+metrics:
+## to do string operation on url -- cut the url after /
+- name: segment__daily_page_views
+  label: Segment Daily Page Views
+  model: ref('segment__pages')
+  description: Daily number of page views for your website
+  type: count
+  sql: message_id
+  timestamp: received_at
+  time_grains: [day]
+  filters: []
+  dimensions: []
+
+- name: segment__daily_page_views_by_page_path
+  label: Segment Daily Page Views Segmented By Page Path
+  model: ref('segment__pages')
+  description: Daily number of page views for your website segmented by page path
+  type: count
+  sql: message_id
+  timestamp: received_at
+  time_grains: [day]
+  filters: []
+  dimensions: [context_page_path]
+
+- name: segment__daily_page_views_by_page_referrer
+  label: Segment Daily Page Views Segmented By Referred Page
+  model: ref('segment__pages')
+  description: Daily number of page views for your website segmented by referred page
+  type: count
+  sql: message_id
+  timestamp: received_at
+  time_grains: [day]
+  filters: []
+  dimensions: [context_page_referrer]
+  

@@ -14,25 +14,24 @@ This package enables you to access commonly used metrics on top of Segment Event
 This package contains transformed models built on top of [dbt-labs Segment](https://github.com/dbt-labs/segment). A dependency on the referred package is declared in this package's `packages.yml` file, so it will automatically download when you run `dbt deps`. 
 
 The metrics offered by this package are described below
-
+(All metrics are available at daily and monthly granularity)
 | **metric**                          | **description**                                                                                                                                                                                                                              |
 |--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Segment Daily Number of Sessions    | Number of sessions daily                
-| Segment Daily Number of Sessions By Device Category     | Number of sessions daily segmented by device category                        
-| Segment Daily Number of Sessions By Referrer Source    | Number of sessions daily segmented by the website that brings the traffic
-| Segment Daily Unique Users    | Daily unique users recorded across your website and mobile applications. This is based on the Segment Identify API
-| Segment Daily Unique Users Segmented By Country    |         Daily unique users recorded across your website and mobile applications segmented by user's country derived from their location. This is based on the Segment Identify API                                                               |
-| Segment Daily Unique Users Segmented By Country and City    |  Daily unique users recorded across your website and mobile applications segmented by user's country & city derived from their location. This is based on the Segment Identify API                                     |
-| Segment Daily Page Views    | Daily number of page views for your website                                                         |
-| Segment Daily Page Views Segmented By Page Path    | Daily number of page views for your website segmented by page path              |
-| Segment Monthly Event Count Segmented By Event Type    | Monthly count of events segmented by event type based on Segment's Track API| 
-| Segment Monthly Unique Users | Monthly unique users recorded across your website and mobile applications. This is based on the Segment Identify API |
-| Segment Monthly Average Session Duration in Seconds | Monthly average session duration in seconds. Sessionization is done on top of data from Segment's Page API | 
-| Segment Monthly Average Session Duration in Seconds Segmented By Device Category |  Monthly average session duration in seconds segmented by device category. Sessionization is done on top of data from Segment's Page API | 
-| Segment Monthly Average Session Duration in Seconds Segmented By Referrer Source | Monthly average session duration in seconds segmented by source of the traffic. Sessionization is done on top of data from Segment's Page API | 
-| Segment Daily Unique Visitors | Daily number of unique visitors visiting your website. Visitors include anonymous users too | 
-| Segment Daily Unique Visitors Segmented By Country | Daily number of unique visitors visiting your website segmented by user's country derived from their location. Visitors include anonymous users too | 
-| Segment Daily Unique Visitors By Segmented Country and City | Daily number of unique visitors visiting your website segmented by user's country & city derived from their location. Visitors include anonymous users too | 
+| Segment Number of Sessions    | Number of app sessions taking place                 
+| Segment  Number of Sessions By Device Category     | Number of sessions  segmented by device category                        
+| Segment  Number of Sessions By Referrer Source    | Number of sessions  segmented by the website that brings the traffic
+| Segment  Unique Users    |  Unique users recorded across your website and mobile applications. This is based on the Segment Identify API
+| Segment  Unique Users Segmented By Country    |          Unique users recorded across your website and mobile applications segmented by user's country derived from their location. This is based on the Segment Identify API                                                               |
+| Segment  Unique Users Segmented By Country and City    |   unique users recorded across your website and mobile applications segmented by user's country & city derived from their location. This is based on the Segment Identify API                                     |
+| Segment  Page Views    |  number of page views for your website                                                         |
+| Segment  Page Views Segmented By Page Path    |  number of page views for your website segmented by page path              | Segment  Page Views Segmented By Page Referrer  | number of page views for your website segmented by referred page |
+| Segment  Event Count Segmented By Event Type    |  count of events segmented by event type based on Segment's Track API| 
+| Segment  Average Session Duration in Seconds |  average session duration in seconds. Sessionization is done on top of data from Segment's Page API | 
+| Segment  Average Session Duration in Seconds Segmented By Device Category |   average session duration in seconds segmented by device category. Sessionization is done on top of data from Segment's Page API | 
+| Segment  Average Session Duration in Seconds Segmented By Referrer Source |  average session duration in seconds segmented by source of the traffic. Sessionization is done on top of data from Segment's Page API | 
+| Segment  Unique Visitors |  number of unique visitors visiting your website. Visitors include anonymous users too | 
+| Segment  Unique Visitors Segmented By Country |  number of unique visitors visiting your website segmented by user's country derived from their location. Visitors include anonymous users too | 
+| Segment  Unique Visitors By Segmented Country and City |  number of unique visitors visiting your website segmented by user's country & city derived from their location. Visitors include anonymous users too | 
 
 # 🎯 How do I use the dbt package?
 ## Step 1: Prerequisites
@@ -67,6 +66,20 @@ vars:
   segment_schema: your_schema_name
 ```
 
+## Step 4: Separate metrics into different schema
+
+By default, this package will compute all the metrics in your `target` schema inside `target` database. It's a good practice to add a suffix to your schema defining what source the metrics are coming from 
+Go to your `dbt_project.yml` file
+```yml
+# dbt_project.yml
+
+...
+config-version: 2
+
+models:
+  segment_metrics:
+    +schema: segment_metrics
+```
 # 🗄 Which warehouses are supported?
 This package has been tested on BigQuery, Snowflake.
 
