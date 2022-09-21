@@ -6,8 +6,8 @@
 {{ config(materialized = 'table') }}
 
 select *
-from {{ metrics.metric(
-    metric_name='segment__monthly_unique_visitors',
+from {{ metrics.calculate(
+    metric('segment__monthly_unique_visitors'),
     grain='month',
     dimensions=[],
     secondary_calculations=[]

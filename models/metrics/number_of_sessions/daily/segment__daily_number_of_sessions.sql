@@ -6,8 +6,8 @@
 {{ config(materialized = 'table') }}
 
 select *
-from {{ metrics.metric(
-    metric_name='segment__daily_number_of_sessions',
+from {{ metrics.calculate(
+    metric('segment__daily_number_of_sessions'),
     grain='day',
     dimensions=[],
     secondary_calculations=[]
