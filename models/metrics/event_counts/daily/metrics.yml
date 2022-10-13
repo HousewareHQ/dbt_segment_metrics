@@ -3,12 +3,12 @@ sources: []
 models: []
 metrics:
 ## to do string operation on url -- cut the url after /
-- name: segment__daily_event_count_by_event_type
+- name: segment__daily_event_count_by_event_calculation_method
   label: Segment Daily Event Count Segmented By Event Type
   model: ref('segment__tracks')
-  description: Daily count of events segmented by event type based on Segment's Track API
-  type: count
-  sql: event
+  description: Daily count of events segmented by event calculation_method based on Segment's Track API
+  calculation_method: count
+  expression: event
   timestamp: received_at
   time_grains: [day]
   filters: []

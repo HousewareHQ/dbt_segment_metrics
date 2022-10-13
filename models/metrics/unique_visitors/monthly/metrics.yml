@@ -6,8 +6,8 @@ metrics:
   label: Segment monthly Unique Visitors
   model: ref('segment__pages')
   description: monthly number of unique visitors visiting your website. Visitors include anonymous users too
-  type: count_distinct
-  sql: anonymous_id
+  calculation_method: count_distinct
+  expression: anonymous_id
   timestamp: received_at
   time_grains: [month]
   filters: []
@@ -18,8 +18,8 @@ metrics:
   label: Segment monthly Unique Visitors Segmented By Country
   model: ref('segment__pages')
   description: monthly number of unique visitors visiting your website segmented by user's country derived from their location. Visitors include anonymous users too
-  type: count_distinct
-  sql: anonymous_id
+  calculation_method: count_distinct
+  expression: anonymous_id
   timestamp: received_at
   time_grains: [month]
   filters: []
@@ -29,8 +29,8 @@ metrics:
   label: Segment monthly Unique Visitors By Segmented Country and City
   model: ref('segment__pages')
   description: monthly number of unique visitors visiting your website segmented by user's country & city derived from their location. Visitors include anonymous users too
-  type: count_distinct
-  sql: anonymous_id
+  calculation_method: count_distinct
+  expression: anonymous_id
   timestamp: received_at
   time_grains: [month]
   filters: []

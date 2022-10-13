@@ -7,8 +7,8 @@ metrics:
   label: Segment Daily Page Views
   model: ref('segment__pages')
   description: Daily number of page views for your website
-  type: count
-  sql: message_id
+  calculation_method: count
+  expression: message_id
   timestamp: received_at
   time_grains: [day]
   filters: []
@@ -18,8 +18,8 @@ metrics:
   label: Segment Daily Page Views Segmented By Page Path
   model: ref('segment__pages')
   description: Daily number of page views for your website segmented by page path
-  type: count
-  sql: message_id
+  calculation_method: count
+  expression: message_id
   timestamp: received_at
   time_grains: [day]
   filters: []
@@ -29,8 +29,8 @@ metrics:
   label: Segment Daily Page Views Segmented By Referred Page
   model: ref('segment__pages')
   description: Daily number of page views for your website segmented by referred page
-  type: count
-  sql: message_id
+  calculation_method: count
+  expression: message_id
   timestamp: received_at
   time_grains: [day]
   filters: []
