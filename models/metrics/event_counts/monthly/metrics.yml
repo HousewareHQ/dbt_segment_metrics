@@ -2,10 +2,10 @@ version: 2
 sources: []
 models: []
 metrics:
-- name: segment__monthly_event_count_by_event_calculation_method
+- name: segment__monthly_event_count_by_event_type
   label: Segment Monthly Event Count Segmented By Event Type
   model: ref('segment__tracks')
-  description: Monthly count of events segmented by event calculation_method based on Segment's Track API
+  description: Monthly count of events segmented by event type based on Segment's Track API
   calculation_method: count
   expression: event
   timestamp: received_at
