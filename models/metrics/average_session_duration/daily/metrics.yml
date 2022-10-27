@@ -6,8 +6,8 @@ metrics:
   label: Segment daily Average Session Duration in Seconds
   model: ref('segment_web_sessions')
   description: daily average session duration in seconds. Sessionization is done on top of data from Segment's Page API
-  type: average
-  sql: duration_in_s
+  calculation_method: average
+  expression: duration_in_s
   timestamp: session_start_tstamp
   time_grains: [day]
   filters: []
@@ -17,8 +17,8 @@ metrics:
   label: Segment daily Average Session Duration in Seconds Segmented By Device Category
   model: ref('segment_web_sessions')
   description: daily average session duration in seconds segmented by device category. Sessionization is done on top of data from Segment's Page API
-  type: average
-  sql: duration_in_s
+  calculation_method: average
+  expression: duration_in_s
   timestamp: session_start_tstamp
   time_grains: [day]
   filters: []
@@ -28,8 +28,8 @@ metrics:
   label: Segment daily Average Session Duration in Seconds Segmented By Referrer Source
   model: ref('segment_web_sessions')
   description: daily average session duration in seconds segmented by source of the traffic. Sessionization is done on top of data from Segment's Page API
-  type: average
-  sql: duration_in_s
+  calculation_method: average
+  expression: duration_in_s
   timestamp: session_start_tstamp
   time_grains: [day]
   filters: []

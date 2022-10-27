@@ -6,8 +6,8 @@ metrics:
   label: Segment monthly Number of Sessions
   model: ref('segment_web_sessions')
   description: Number of sessions monthly
-  type: count_distinct
-  sql: session_id
+  calculation_method: count_distinct
+  expression: session_id
   timestamp: session_start_tstamp
   time_grains: [month]
   filters: []
@@ -17,8 +17,8 @@ metrics:
   label: Segment monthly Number of Sessions By Device Category
   model: ref('segment_web_sessions')
   description: Number of sessions monthly segmented by device category
-  type: count_distinct
-  sql: session_id
+  calculation_method: count_distinct
+  expression: session_id
   timestamp: session_start_tstamp
   time_grains: [month]
   filters: []
@@ -28,8 +28,8 @@ metrics:
   label: Segment monthly Number of Sessions By Referrer Source
   model: ref('segment_web_sessions')
   description: Number of sessions monthly segmented by the website that brings the traffic
-  type: count_distinct
-  sql: session_id
+  calculation_method: count_distinct
+  expression: session_id
   timestamp: session_start_tstamp
   time_grains: [month]
   filters: []
@@ -39,8 +39,8 @@ metrics:
   label: Segment monthly Number of Sessions By Last Page URL Path
   model: ref('segment_web_sessions')
   description: Number of sessions monthly segmented by the last page visited in session
-  type: count_distinct
-  sql: session_id
+  calculation_method: count_distinct
+  expression: session_id
   timestamp: session_start_tstamp
   time_grains: [month]
   filters: []
@@ -50,8 +50,8 @@ metrics:
   label: Segment monthly Number of Sessions By First Page URL Path
   model: ref('segment_web_sessions')
   description: Number of sessions monthly segmented by the first page viewed in session
-  type: count_distinct
-  sql: session_id
+  calculation_method: count_distinct
+  expression: session_id
   timestamp: session_start_tstamp
   time_grains: [month]
   filters: []
