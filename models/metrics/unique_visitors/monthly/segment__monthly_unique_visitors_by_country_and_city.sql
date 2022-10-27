@@ -7,7 +7,7 @@
 
 select *
 from {{ metrics.calculate(
-    metric('segment__monthly_unique_visitors_by_country'),
+    metric('segment__monthly_unique_visitors_by_country_and_city'),
     grain='month',
     dimensions=['context_location_country','context_location_city'],
     secondary_calculations=[]
